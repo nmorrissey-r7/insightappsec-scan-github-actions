@@ -1,14 +1,12 @@
-name: Test Action
+name: Test Action Published
 on: workflow_dispatch
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: ./
+      - uses: rapid7/insightappsec-scan-github-actions@v1.5.0
         with:
           region: "us"
           api-key: ${{ secrets.IAS_API_KEY }}
           scan-config-id: ${{ secrets.SCAN_CONFIG_ID }}
-          vuln-query: "vulnerability.vulnerabilityScore > 0"
